@@ -1,0 +1,60 @@
+.important {
+  color: #ff0000;
+}
+
+#sideSection,#report-view{
+  height: 93vh;
+  max-height: 93vh;
+  /* border: 1px solid; */
+}
+#sortSection{
+ height: 70vh;
+ max-height: 70vh;
+ /* border: 1px solid red;  */
+}
+#btnBOX{
+  height: 18vh;
+  max-height: 18vh;
+  /* border:1px solid; */
+}
+/* For Sortable Box Might Be Usefull in future */
+/* 
+.sortable-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+
+.sortable-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 100%;
+  min-height: 40px;
+  overflow-y: auto;
+}
+
+.sortable-box div {
+  display: inline-block;
+  align-items: center;
+  margin: 0px 5px;
+  padding: 5px;
+  background-color: #f8f9fa;
+  border: 1px solid #d6d8db;
+  border-radius: 5px;
+}
+
+.remove-btn {
+  cursor: pointer;
+  margin-left: 5px;
+  color: #dc3545;
+}
+
+.sortable-header {
+  cursor: pointer;
+}
+
+#sideSection{
+  min-height: 846px;
+  max-height: 846px;
+} */

@@ -1,0 +1,33 @@
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    width: 100%;
+    margin-bottom: 10px;
+} 
+
+
+.form-label {
+    font-weight: bold;
+}
+
+textarea{
+    resize: none!important;
+}
+.important{
+    margin-left: 5px;
+    color: red;
+}
+
+.check-addr{
+    margin-top: 20px;
+    margin-left: 0px;
+}
+
+#complainants_table_container{
+    max-height: 760px;
+}
+
+#complaints_detailsTABLE{
+    min-height: 250px;
+    max-height: 250px;
+}

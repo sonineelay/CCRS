@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/complaints.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html" style="font-weight: bold;">CCRS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="registrations.html">Registrations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" d-md-block  p-0">
+        <nav id="sidebar" class="sidebar">
+            <!-- Sidebar content (navigation links for sub-routes) goes here -->
+            <div class="list-group rounded-0 mt-1 p-0">
+                <a href="dashboard.html" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="complainants.html" class="list-group-item list-group-item-action">Complainants</a>
+                <a href="complaints.html" class="list-group-item list-group-item-action active">Complaints</a>
+                <a href="officers.html" class="list-group-item list-group-item-action">Officers</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid py-3" id="main-section">
+
+        <div class="search-bar-container">
+            <div class="search-bar">
+              <div class="search-icon">
+                <i class="fas fa-search"></i>
+              </div>
+              <input type="text" placeholder="Search..." id="searchInput">
+              <button class="new-complaint-btn" data-bs-toggle="modal" data-bs-target="#complaintCreatingModal" > <i class="fas fa-plus"></i> <span>New Complaint</span></button>
+            </div>
+        </div>
+        
+        
+          <div class="table-responsive complaints_table">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Complaint ID</th>
+                        <th>Complainant Name</th>
+                        <th>Officer Name</th>
+                        <th>Categories</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                </thead>
+                <tbody class="border-5 border-bottom-0 border-start-0 border-end-0  border-sanatani" id="complaints_table_container">
+
+                </tbody>
+            </table>
+          </div>
+
+    </div>
+
+    <!-- Modal for creating a new complaint -->
+    <div class="modal fade" id="complaintCreatingModal" tabindex="-1" aria-labelledby="complaintCreatingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <h2 class="text-center">New Complaint </h2>
+                <div class=" p-0">
+                    <form id="complainantForm">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="complainants_list" class="form-label">Complainants Details<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="complainants_list" required>
+                                                <option selected>Select Complainant</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="complainants_list" class="form-label">Incharge Officer<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="officers_list" required>
+                                                <option selected>Select Officer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="priority" class="form-label">Complaint Priority<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="priority" required>
+                                                <option selected>Select Priority</option>
+                                                <option value="low">Low</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="high">High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="categories_list" class="form-label">Categories<span class="important">*</span></label>
+                                            <select class="form-select" id="categories_list" required>
+                                                <option selected>Complaint Category</option>
+                                                <option value="harassment">Harassment</option>
+                                                <option value="phishing">Phishing</option>
+                                                <option value="identity_theft">Identity Theft</option>
+                                                <option value="ransomware">Ransomware</option>
+                                                <option value="cyber_bullying">Cyber Bullying</option>
+                                                <option value="fraud">Fraud</option>
+                                                <option value="data_breach">Data Breach</option>
+                                                <option value="malware">Malware</option>
+                                            </select>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="incident_datetime" class="form-label">Incident Date Time<span
+                                                    class="important">*</span></label>
+                                            <input type="datetime-local" class="form-control" id="incident_datetime"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="registration_datetime" class="form-label">Complaint Registered On<span
+                                                    class="important">*</span></label>
+                                            <input type="datetime-local" step="2" class="form-control" id="registration_datetime"
+                                                required>
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="complaint_description" class="form-label">Complainant Description<span
+                                                    class="important">*</span></label>
+                                            <textarea class="form-control" id="complaint_description" rows="3" placeholder="Enter the details about the incident happened"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repeat similar blocks for other input fields -->
+                        
+
+                        <div class="d-flex justify-content-center">
+                            <!-- Buttons with Font Awesome Icons -->
+                            <button type="submit" class="btn btn-outline-success mx-1" onclick="addNewComplaint();">
+                                <i class="bi bi-plus-lg"></i> Add Complaint
+                            </button>
+
+                            <button type="reset" class="btn btn-outline-danger mx-1">
+                                <i class="bi bi-arrow-clockwise"></i> Reset Form
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary mx-1"
+                                onclick=" $('#officerCreatingModal').modal('hide');">
+                                <i class="bi bi-x-lg"></i> Close Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="complaintViewingModal" tabindex="-1" aria-labelledby="complaintViewingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2 class="fw-bold" id="complaint_id"></h2>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="enableEditSwitch">
+                            <label class="form-check-label" for="enableEditSwitch">Enable Updating</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Complaint Status</label>
+                            <input type="text" class="form-control" id="status" disabled>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class=" p-0">
+                    <form id="complaintForm">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="ucomplainants_list" class="form-label">Complainants Details<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="ucomplainants_list" >
+                                                <option selected>Select Complainant</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="ucomplainants_list" class="form-label">Incharge Officer<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="uofficers_list" required>
+                                                <option selected>Select Officer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="ucategories_list" class="form-label">Categories<span class="important">*</span></label>
+                                            <select class="form-select" id="ucategories_list" required>
+                                                <option selected>Complaint Category</option>
+                                                <option value="harassment">Harassment</option>
+                                                <option value="phishing">Phishing</option>
+                                                <option value="identity_theft">Identity Theft</option>
+                                                <option value="ransomware">Ransomware</option>
+                                                <option value="cyber_bullying">Cyber Bullying</option>
+                                                <option value="fraud">Fraud</option>
+                                                <option value="data_breach">Data Breach</option>
+                                                <option value="malware">Malware</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="upriority" class="form-label">Complaint Priority<span
+                                                    class="important">*</span></label>
+                                            <select class="form-select" id="upriority" required>
+                                                <option selected>Select Priority</option>
+                                                <option value="low">Low</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="high">High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="uincident_datetime" class="form-label">Incident Date Time<span
+                                                    class="important">*</span></label>
+                                            <input type="datetime-local" class="form-control" id="uincident_datetime"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="uregistration_datetime" class="form-label">Complaint Registered On<span
+                                                    class="important">*</span></label>
+                                            <input type="datetime-local" step="2" class="form-control" id="uregistration_datetime"
+                                                required>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="ucomplaint_description" class="form-label">Complainant Description<span
+                                                    class="important">*</span></label>
+                                            <textarea class="form-control" id="ucomplaint_description" rows="3" placeholder="Enter the details about the incident happened"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h2 class="border-0 pb-1">Progress Details </h2>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button tyle="button" class="btn btn-outline-sanatani" onclick="createTextareaRow(event)"><i class="bi bi-plus-lg"></i> Add Progress</button>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive my-1 progress-table" id="progress_table">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Updated By</th>
+                                                        <th>Progress Description</th>
+                                                        <th style="width: 200px;">Updated At</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="" id="progress_tableBody">
+                                                    <!-- Your dynamic content will be appended here -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repeat similar blocks for other input fields -->
+                        <div class="row actions-bar">
+
+                        </div>
+                        <!-- <div class="d-flex justify-content-center actions-bar">
+                        </div> -->
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    
+    
+   
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/complaints.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+
+
+
+</html>

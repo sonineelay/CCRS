@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officers</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/officers.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html" style="font-weight: bold;">CCRS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="registrations.html">Registrations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav id="sidebar" class="sidebar ">
+        <!-- Sidebar content (navigation links for sub-routes) goes here -->
+        <div class="list-group rounded-0 mt-1 p-0">
+            <a href="dashboard.html" class="list-group-item list-group-item-action">Dashboard</a>
+            <a href="complainants.html" class="list-group-item list-group-item-action">Complainants</a>
+            <a href="complaints.html" class="list-group-item list-group-item-action ">Complaints</a>
+            <a href="officers.html" class="list-group-item list-group-item-action active">Officers</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-3" id="main-section">
+
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input type="text" placeholder="Search..." id="searchInput">
+                <button class="new-officer-btn" data-bs-toggle="modal" data-bs-target="#officerCreatingModal"> <i
+                        class="fas fa-plus"></i> <span>New officer</span></button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="officers_table_container">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr class="">
+                        <th>#</th>
+                        <th>Officer Id</th>
+                        <th>Officer Name</th>
+                        <th>Position</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>DOB</th>
+                        <th>Gender</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody class="border-5 border-bottom-0 border-start-0 border-end-0  border-primary" id="officers_table_body">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+        <!-- Modal UPDATING THE OFFICERS DETAILS -->
+        <div class="modal fade" id="officerViewingModal" tabindex="-1" aria-labelledby="officerViewingLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-5 col-6">
+                            <h4 class="fw-bold"><span id="officerID"></span></h4>
+                        </div>
+                        <div class="col-md-3 col-sm-7 col-6">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="enableEditSwitch">
+                                <label class="form-check-label" for="enableEditSwitch">Enable Updating</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" p-0">
+                        <form id="officerEditingForm">
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ufirstName" class="form-label">First Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="ufirstName"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="umiddleName" class="form-label">Middle Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="umiddleName">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ulastName" class="form-label">Last Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="ulastName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="udateOfBirth" class="form-label">Date of Birth<span
+                                                                class="important">*</span></label>
+                                                        <input type="date" class="form-control" id="udateOfBirth"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ugender" class="form-label">Gender<span
+                                                                class="important">*</span></label>
+                                                        <select class="form-select" id="ugender" required>
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                            <option value="other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="uaadhaarCardNumber" class="form-label">Aadhaar Card
+                                                            Number<span class="important">*</span></label>
+                                                        <input type="tel" maxlength="12" class="form-control"
+                                                            id="uaadhaarCardNumber" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="uregisteredPhone" class="form-label">Registered
+                                                            Phone<span class="important">*</span></label>
+                                                        <input type="tel" maxlength="13" class="form-control"
+                                                            id="uregisteredPhone" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="ualternatePhone" class="form-label">Alternate
+                                                            Phone</label>
+                                                        <input type="tel" class="form-control" id="ualternatePhone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="uposition" class="form-label">Position<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="uposition">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="uemailId" class="form-label">Email Id</label>
+                                                        <input type="text" class="form-control" id="uemailId">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h2 class="text-center border-0 pb-1">Officers Expertise </h2>
+                                            <div class="table-responsive my-1 expertise_table" id="uexpertise_table">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Fields</th>
+                                                            <th>Experience (In Years)</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="border border-bottom-0 border-start-0 border-end-0  border-primary" id="uexpertise_tableBody">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="uemailIdAlt" class="form-label">Alternate Email
+                                                            Id</label>
+                                                        <input type="text" class="form-control" id="uemailIdAlt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="unationality" class="form-label">Nationality<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="unationality"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="upermanentAddress" class="form-label">Permanent Address<span
+                                                        class="important">*</span></label>
+                                                <textarea class="form-control" id="upermanentAddress" rows="3"
+                                                    required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="ucurrentAddress" class="form-label">Current Address<span
+                                                        class="important">*</span></label>
+                                                <textarea class="form-control" id="ucurrentAddress" rows="3"
+                                                    required></textarea>
+                                            </div>
+                                            <div class="mb-3 check-addr">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="usameAddressCheckbox">
+                                                <label class="form-check-label" for="usameAddressCheckbox">Same as
+                                                    Permanent
+                                                    Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive" id="complaints_detailsTABLE">
+                                <table class="table table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Complaint Id (Categories)</th>
+                                            <th>Complainant Name (Complainant ID)</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="complaints_details">
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="d-flex justify-content-center" id="updating_bar">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CREATING A NEW OFFICER-->
+        <div class="modal fade" id="officerCreatingModal" tabindex="-1" aria-labelledby="officerCreatingModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <h2 class="text-center">New Officer </h2>
+                    <div class=" p-0">
+                        <form id="complainantForm">
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="firstName" class="form-label">First Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="firstName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="middleName" class="form-label">Middle Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="middleName">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="lastName" class="form-label">Last Name<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="lastName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="dateOfBirth" class="form-label">Date of Birth<span
+                                                                class="important">*</span></label>
+                                                        <input type="date" class="form-control" id="dateOfBirth"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="gender" class="form-label">Gender<span
+                                                                class="important">*</span></label>
+                                                        <select class="form-select" id="gender" required>
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                            <option value="other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="aadhaarCardNumber" class="form-label">Aadhaar Card
+                                                            Number<span class="important">*</span></label>
+                                                        <input type="tel" maxlength="12" class="form-control"
+                                                            id="aadhaarCardNumber" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="registeredPhone" class="form-label">Registered
+                                                            Phone<span class="important">*</span></label>
+                                                        <input type="tel" maxlength="10" class="form-control"
+                                                            id="registeredPhone" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="alternatePhone" class="form-label">Alternate
+                                                            Phone</label>
+                                                        <input type="tel" maxlength="10" class="form-control"
+                                                            id="alternatePhone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="position" class="form-label">Position<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="position">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="emailId" class="form-label">Email Id</label>
+                                                        <input type="text" class="form-control" id="emailId">
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h2 class="text-center border-0 pb-1">Officers Expertise </h2>
+                                            <div class="table-responsive my-1 expertise_table " id="expertise_table">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Fields</th>
+                                                            <th>Experience (In Years)</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="border border-bottom-0 border-start-0 border-end-0  border-primary" id="expertise_tableBody">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="emailIdAlt" class="form-label">Alternate Email
+                                                            Id</label>
+                                                        <input type="text" class="form-control" id="emailIdAlt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="nationality" class="form-label">Nationality<span
+                                                                class="important">*</span></label>
+                                                        <input type="text" class="form-control" id="nationality"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="permanentAddress" class="form-label">Permanent Address<span
+                                                        class="important">*</span></label>
+                                                <textarea class="form-control" id="permanentAddress" rows="3"
+                                                    required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="currentAddress" class="form-label">Current Address<span
+                                                        class="important">*</span></label>
+                                                <textarea class="form-control" id="currentAddress" rows="3"
+                                                    required></textarea>
+                                            </div>
+                                            <div class="mb-3 check-addr">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="sameAddressCheckbox">
+                                                <label class="form-check-label" for="sameAddressCheckbox">Same as
+                                                    Permanent
+                                                    Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repeat similar blocks for other input fields -->
+
+                            <div class="d-flex justify-content-center">
+                                <!-- Buttons with Font Awesome Icons -->
+
+                                <button type="submit" class="btn btn-outline-success mx-1" onclick="addOfficer();">
+                                    <i class="fas fa-plus"></i> Add Officer
+                                </button>
+
+                                <button type="reset" class="btn btn-outline-danger mx-1">
+                                    <i class="fas fa-sync-alt"></i> Reset Form
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary mx-1"
+                                    onclick=" $('#officerCreatingModal').modal('hide');">
+                                    <i class="fas fa-x"></i> Close Form
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/officers.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+
+
+
+</html>

@@ -1,0 +1,28 @@
+#main-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 93vh;
+    /* border: 1px solid; */
+}
+
+.frame {
+    text-align: center;
+}
+
+/* Additional styles for better aesthetics */
+.frame h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.frame h1 {
+    color:  rgb(255, 136, 0)!important;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.frame p {
+    font-size: 1.5rem;
+}

@@ -1,0 +1,54 @@
+.form-label {
+    font-weight: bold;
+}
+
+textarea{
+    resize: none!important;
+}
+.important{
+    margin-left: 5px;
+    color: red;
+}
+
+.check-addr{
+    margin-top: 20px;
+    margin-left: 0px;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.expertise_field{
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+}
+.expertise_table{
+    position: relative;
+    overflow: auto;
+    min-height: 290px;
+    max-height: 290px;
+}
+
+.expertise_table thead{
+    /* position: fixed; */
+    z-index: 100;
+}
+
+#officers_table_container{
+    max-height: 760px;
+}
+
+
+#complaints_detailsTABLE{
+    min-height: 160px;
+    max-height: 160px;
+}

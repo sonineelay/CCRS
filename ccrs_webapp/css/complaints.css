@@ -1,0 +1,27 @@
+.form-label {
+    font-weight: bold;
+}
+
+textarea{
+    resize: none!important;
+}
+.important{
+    margin-left: 5px;
+    color: red;
+}
+
+
+
+textarea{
+    min-height: 90px!important;
+}
+
+.progress-table{
+    height: 340px!important; 
+    overflow: auto!important;
+}
+
+
+.complaints_table{
+    max-height: 740px;
+}

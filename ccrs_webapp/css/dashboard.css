@@ -1,0 +1,146 @@
+.card {
+  display: inline-block;
+  box-shadow: 0 1px 8px 0.1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  margin:0.3rem;
+}
+
+.card:hover {
+  box-shadow: 0 2px 5px 0.2px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  padding: 10px!important;
+}
+
+.user-details {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.user-icon {
+  flex-shrink: 0;
+}
+
+.card-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background-color: white; */
+}
+
+#officers_list {
+  position: relative;
+}
+
+
+
+ 
+
+#officers_list .title {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  /* background-color: #fff; */
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
+  z-index: 10;
+}
+
+.officer_list .card-text{
+  margin: 5px;
+}
+
+/* Custom CSS for responsive cards */
+.officer_list .card {
+  width: 100%; /* Set the width of the card to 100% */
+  margin-bottom: 15px; /* Add some spacing between cards */
+}
+
+/* Adjust the size of the user circle icon */
+.officer_list .card i.fas {
+  font-size: 5rem; /* Adjust the font size as needed */
+}
+
+/* Center the user circle icon */
+.officer_list .card .container-fluid.pb-2.mb-2.border-0.border-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+/* Center text in the card */
+.officer_list .card .container-fluid.p-0 {
+  text-align: center;
+}
+
+
+/* Adjust the spacing between elements in the card */
+.officer_list .card h5,
+.officer_list .card p {
+  margin-bottom: 0.5rem;
+}
+
+
+
+ .table-responsive {
+  /* height: 600px;  */
+  overflow: auto;
+} 
+  
+#sideSection-Details{
+  height: 92vh;
+  /* border: 1px solid; */
+}
+#officers-list-container{
+  height: 38vh;
+  max-height: 38vh;
+  /* border: 1px solid; */
+}
+#complaints_table{
+  height: 52vh;
+  max-height: 52vh;
+  position: relative;
+  /* border: 1px solid; */
+}
+
+#officers_list .row{
+  /* margin-bottom: 20px; */
+  /* height: 85vh; */
+  max-height: 85vh;
+}
+
+/* Make the table header fixed at the top */
+.table thead , .table thead tr,.complaints_table_tag thead tr,.table thead tr{
+  position: sticky;
+  top: 0;
+  border-bottom: 5px solid  rgb(255, 136, 0)!important;
+  z-index: 1; /* Ensure the header is on top of the scrollable content */
+}
+
+.table tbody tr{
+  border-bottom: 1px solid  rgb(255, 136, 0)!important;
+}
+
+/* Add some styling to the table cells for better visibility */
+/* .table th, .table td {
+  white-space: nowrap;
+} */
+
+
+
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 576px) {
+  .officer_list .card {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  /* Adjust the font size for smaller screens */
+  .officer_list .card i.fas {
+    font-size: 3rem;
+  }
+}
+
